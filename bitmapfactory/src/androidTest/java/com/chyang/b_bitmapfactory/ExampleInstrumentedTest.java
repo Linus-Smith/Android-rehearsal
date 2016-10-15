@@ -1,4 +1,4 @@
-package com.chyang.android_rehearsal;
+package com.chyang.b_bitmapfactory;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.chyang.android_rehearsal", appContext.getPackageName());
+        assertEquals("com.chyang.b_bitmapfactory", appContext.getPackageName());
     }
 }

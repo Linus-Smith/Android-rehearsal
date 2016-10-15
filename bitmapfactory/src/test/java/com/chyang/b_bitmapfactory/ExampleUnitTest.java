@@ -1,4 +1,4 @@
-package com.chyang.android_rehearsal;
+package com.chyang.b_bitmapfactory;
 
 import org.junit.Test;
 
