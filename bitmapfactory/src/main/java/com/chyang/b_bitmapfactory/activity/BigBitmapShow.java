@@ -67,7 +67,7 @@ public class BigBitmapShow extends AppCompatActivity {
         int bitmapHeight =bmpFactoryOptions.outHeight;
         Log.d("image Size:", "width:"+ bitmapWidth+"    height:"+bitmapHeight);
         int heightRatio = (int) Math.ceil(bmpFactoryOptions.outHeight);
-        
+
 
     }
 }
