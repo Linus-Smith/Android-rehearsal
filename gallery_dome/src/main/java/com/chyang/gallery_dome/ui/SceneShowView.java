@@ -12,6 +12,7 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -38,7 +39,7 @@ public class SceneShowView extends View {
     private static final float MOVE_SPEED = SCALE_SPEED;
 
     private static final int SLIDESHOW_DURATION = 3500;
-    private static final int TRANSITION_DURATION = 10;
+    private static final int TRANSITION_DURATION = 2000;
 
     private Paint mPaint;
     private int mCurrentRotation;
@@ -157,6 +158,7 @@ public class SceneShowView extends View {
 
             canvas.restore();
         }
+
         if (requestRender) invalidate();
     }
 

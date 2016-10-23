@@ -19,23 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById(R.id.bt_gallery_scroller).setOnClickListener(this);
         findViewById(R.id.bt_scene_switch).setOnClickListener(this);
-        ScrollView mScrollView = new ScrollView(this);
-        SurfaceView mSurfaceView = new SurfaceView(this);
-        mSurfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
-            @Override
-            public void surfaceCreated(SurfaceHolder holder) {
-            }
-
-            @Override
-            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-            }
-
-            @Override
-            public void surfaceDestroyed(SurfaceHolder holder) {
-
-            }
-        });
+        findViewById(R.id.bt_sufaceview_dome1).setOnClickListener(this);
 
     }
 
@@ -47,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mIntent.setClass(this, GalleryAutoScroller.class);
         } else if(id == R.id.bt_scene_switch) {
             mIntent.setClass(this, SceneShowActivity.class);
+        } else if(id == R.id.bt_sufaceview_dome1) {
+            mIntent.setClass(this, SurfaceViewDome1.class);
         }
         startActivity(mIntent);
     }
