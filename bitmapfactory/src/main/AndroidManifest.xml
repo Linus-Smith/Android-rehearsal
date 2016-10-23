@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.BigBitmapShow"></activity>
+        <activity android:name=".activity.BigBitmapShow" />
+        <activity android:name=".activity.BitmapCanvasActivity"></activity>
     </application>
 
 </manifest>

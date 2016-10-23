@@ -14,4 +14,11 @@
         android:layout_height="wrap_content"
         android:text="显示大图片"/>
 
+    <Button
+        android:id="@+id/bt_bitmap_canvas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="画图片"/>
+
+
 </LinearLayout>
