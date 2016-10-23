@@ -26,13 +26,17 @@ public class SceneShowActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             index++;
-            if(index == 11) {
+            if(index == 20) {
                 index = 1;
             }
 
-           int  id =  getResources().getIdentifier("imag00"+index,"mipmap",getPackageName());
+           int  id ;
+            if(index < 10) {
+                id = getResources().getIdentifier("imag00" + index, "mipmap", getPackageName());
+            } else {
+                id = getResources().getIdentifier("imag0" + index, "mipmap", getPackageName());
+            }
             Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), id);
-           // System.out.println(mBitmap+"====");
             if(mBitmap != null) {
                 mSceneShowView.next(mBitmap, 0);
             }

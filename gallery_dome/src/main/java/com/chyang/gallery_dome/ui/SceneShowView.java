@@ -5,6 +5,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
@@ -13,6 +14,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.chyang.gallery_dome.anim.Animation;
@@ -28,12 +30,15 @@ import java.util.Random;
 
 public class SceneShowView extends View {
 
+    private static boolean DEBUG = true;
+    private static final String TAG = "SceneShowView";
+
 
     private static final float SCALE_SPEED = 0.20f ;
     private static final float MOVE_SPEED = SCALE_SPEED;
 
     private static final int SLIDESHOW_DURATION = 3500;
-    private static final int TRANSITION_DURATION = 1000;
+    private static final int TRANSITION_DURATION = 10;
 
     private Paint mPaint;
     private int mCurrentRotation;
@@ -72,7 +77,7 @@ public class SceneShowView extends View {
             mPrevBitmap.recycle();
         }
 
-       // bitmap = resizeImage(bitmap, 720, 960);
+        bitmap = resizeImage(bitmap, getWidth(), getHeight());
 
         mPrevBitmap = mCurrentBitmap;
         mPrevAnimation = mCurrentAnimation;
@@ -95,6 +100,7 @@ public class SceneShowView extends View {
     }
 
     public  Bitmap resizeImage(Bitmap bitmap, int w, int h) {
+
         Bitmap BitmapOrg = bitmap;
         int width = BitmapOrg.getWidth();
         int height = BitmapOrg.getHeight();
@@ -167,6 +173,7 @@ public class SceneShowView extends View {
         public SlideshowAnimation(int width, int height, Random random) {
             mWidth = width;
             mHeight = height;
+            if(DEBUG) Log.d(TAG, "animation Width:"+width +"  height:"+height);
             mMovingVector = new PointF(
                     MOVE_SPEED * mWidth * (random.nextFloat() - 0.5f),
                     MOVE_SPEED * mHeight * (random.nextFloat() - 0.5f));
@@ -184,9 +191,32 @@ public class SceneShowView extends View {
 
             float centerX = viewWidth / 2 + mMovingVector.x * mProgress;
             float centerY = viewHeight / 2 + mMovingVector.y * mProgress;
-
             canvas.translate(centerX, centerY);
             canvas.scale(scale, scale);
+
+        }
+
+
+
+        public void apply(Canvas canvas, Bitmap bitmap) {
+            int viewWidth = getWidth();
+            int viewHeight = getHeight();
+
+            float initScale = Math.min((float)
+                    viewWidth / mWidth, (float) viewHeight / mHeight);
+            float scale = initScale * (1 + SCALE_SPEED * mProgress);
+
+            float centerX = viewWidth / 2 + mMovingVector.x * mProgress;
+            float centerY = viewHeight / 2 + mMovingVector.y * mProgress;
+            Matrix matrix = new Matrix();
+            matrix.postScale(scale, scale);
+            matrix.postTranslate(centerX,centerY);
+            // if you want to rotate the Bitmap
+            // matrix.postRotate(45);
+           // Bitmap resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, false);
+            canvas.concat(matrix);
+            canvas.drawBitmap(mCurrentBitmap ,-mCurrentBitmap.getWidth() / 2, -mCurrentBitmap.getHeight() / 2,mPaint);
+          // canvas.scale(scale, scale);
 
         }
 

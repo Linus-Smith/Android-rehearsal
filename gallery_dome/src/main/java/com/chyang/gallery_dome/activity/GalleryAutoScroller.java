@@ -39,7 +39,7 @@ public class GalleryAutoScroller extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gallery_auto_scroller);
+         setContentView(R.layout.activity_gallery_auto_scroller);
         rvGallery = (RecyclerView) findViewById(R.id.rv_gallery);
          manager =  new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);

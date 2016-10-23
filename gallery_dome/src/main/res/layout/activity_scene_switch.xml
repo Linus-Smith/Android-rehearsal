@@ -8,6 +8,8 @@
 
     <com.chyang.gallery_dome.ui.SceneShowView
         android:id="@+id/sv"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
