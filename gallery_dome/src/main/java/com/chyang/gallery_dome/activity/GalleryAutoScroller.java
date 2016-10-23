@@ -26,7 +26,7 @@ public class GalleryAutoScroller extends AppCompatActivity {
 
 
     private Handler mHandler = new Handler() {
-        private  int  i =  1;
+        private  int  i =  3;
         @Override
         public void handleMessage(Message msg) {
 
@@ -53,7 +53,7 @@ public class GalleryAutoScroller extends AppCompatActivity {
         mGalleryAutoScrollerAdapter.setData(mColors);
 
         rvGallery.setAdapter(mGalleryAutoScrollerAdapter);
-        mHandler.sendEmptyMessage(0 );
+         mHandler.sendEmptyMessage(0 );
     }
 
 
