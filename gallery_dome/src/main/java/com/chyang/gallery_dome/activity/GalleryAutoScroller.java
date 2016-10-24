@@ -1,16 +1,13 @@
 package com.chyang.gallery_dome.activity;
 
-import android.animation.ValueAnimator;
 import android.graphics.Color;
-import android.graphics.PointF;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ViewAnimator;
+import android.widget.VideoView;
 
 import com.chyang.gallery_dome.R;
 import com.chyang.gallery_dome.adapter.GalleryAutoScrollerAdapter;
@@ -31,7 +28,6 @@ public class GalleryAutoScroller extends AppCompatActivity {
         public void handleMessage(Message msg) {
 
             rvGallery.scrollBy(i, 0);
-            //rvGallery.setTranslationX(i);
             mHandler.sendEmptyMessage(0);
         }
     };

@@ -20,6 +20,8 @@ public class SurfaceViewDome1 extends AppCompatActivity {
         setContentView(R.layout.activity_surface_view_dome1);
         sfView = (SurfaceView) findViewById(R.id.sf);
         SurfaceHolder mSurfaceHolder = sfView.getHolder();
+        VideoView mVideoView = new VideoView(this);
+        SurfaceHolder mSurfaceHolderss = mVideoView.getHolder();
 
     }
 

@@ -23,4 +23,10 @@
         android:layout_height="wrap_content"
         android:text="表层界面1"/>
 
+     <Button
+         android:id="@+id/bt_videoview_dome1"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="视频界面1"/>
+
 </LinearLayout>
