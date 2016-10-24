@@ -1,1 +1,1 @@
-include ':bitmapfactory', ':gallery_dome'
+include ':bitmapfactory', ':gallery_dome', ':canvas_dome'
