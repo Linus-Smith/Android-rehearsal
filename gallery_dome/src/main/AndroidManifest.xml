@@ -18,7 +18,8 @@
         <activity android:name=".activity.GalleryAutoScroller" />
         <activity android:name=".activity.SceneShowActivity" />
         <activity android:name=".activity.SurfaceViewDome1" />
-        <activity android:name=".activity.VideoViewDome1"></activity>
+        <activity android:name=".activity.VideoViewDome1" />
+        <activity android:name=".activity.StoryGalleryShowActivity"></activity>
     </application>
 
 </manifest>
