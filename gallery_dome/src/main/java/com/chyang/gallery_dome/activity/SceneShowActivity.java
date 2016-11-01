@@ -28,6 +28,7 @@ public class SceneShowActivity extends AppCompatActivity implements BitmapSceneV
     private BitmapSceneView mSceneShowView;
     private Button btStart;
     private boolean isPlay = false;
+    private Bitmap mCurrentBitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,7 @@ public class SceneShowActivity extends AppCompatActivity implements BitmapSceneV
         if(id == R.id.bt_start) {
             startBitmap();
         } else {
-          //  mSceneShowView.stopShowScene();
+            mSceneShowView.setShowBitmap(mCurrentBitmap);
         }
     }
 
@@ -76,10 +77,8 @@ public class SceneShowActivity extends AppCompatActivity implements BitmapSceneV
          mBitmap = resizeImage(mBitmap, 1080, 900 );
         if(mBitmap != null) {
 
-            mSceneShowView.setShowBitmap(mBitmap);
-
-
-          // mSceneShowView.showNextScene(mBitmap, 3000,1000, 0);
+           mSceneShowView.showNextScene(mBitmap, 6000,0, 0);
+            mCurrentBitmap = mBitmap;
 
         }
         index++;

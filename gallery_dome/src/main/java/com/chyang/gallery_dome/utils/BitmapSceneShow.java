@@ -26,8 +26,12 @@ public class BitmapSceneShow {
        void refreshView();
     }
 
+    public interface onSceneShowAnimationListener {
 
-    private static final float SCALE_SPEED = 0.20f ;
+    }
+
+
+    private static final float SCALE_SPEED = 0.06f ;
     private static final float MOVE_SPEED = SCALE_SPEED;
 
     private static final int SLIDESHOW_DURATION = 3000;
@@ -76,7 +80,6 @@ public class BitmapSceneShow {
             mPrevBitmap.recycle();
         }
 
-
         mPrevBitmap = mCurrentBitmap;
         mPrevAnimation = mCurrentAnimation;
         mPrevRotation = mCurrentRotation;
@@ -92,6 +95,11 @@ public class BitmapSceneShow {
                     mCurrentBitmap.getHeight(), mCurrentBitmap.getWidth(),
                     mRandom);
         }
+
+         mCurrentAnimation.setDuration(playDuration);
+         if(transitionDuration <= 10) mTransitionAnimation.setDuration(500);
+         if(transitionDuration > 10)  mTransitionAnimation.setDuration(transitionDuration);
+
         mCurrentAnimation.start();
         mLinkSceneListener.refreshView();
     }
@@ -143,7 +151,6 @@ public class BitmapSceneShow {
             mMovingVector = new PointF(
                     MOVE_SPEED * mWidth * (random.nextFloat() - 0.5f),
                     MOVE_SPEED * mHeight * (random.nextFloat() - 0.5f));
-            setDuration(SLIDESHOW_DURATION);
         }
 
         @Override

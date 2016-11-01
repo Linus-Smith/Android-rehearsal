@@ -29,7 +29,6 @@ public class GalleryAutoScroller extends AppCompatActivity implements View.OnCli
         public void handleMessage(Message msg) {
 
             rvGallery.scrollBy(i, 0);
-            System.out.println(rvGallery.getScrollX()+"====scroll=---");
             mHandler.sendEmptyMessage(0);
         }
     };

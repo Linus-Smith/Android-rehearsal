@@ -66,7 +66,7 @@ public class BitmapSceneView extends ImageView implements BitmapSceneShow.LinkSc
         mCurrentBitmap = bitmap;
         isPlayer = false;
         setImageBitmap(mCurrentBitmap);
-        invalidate();
+        mHandler.removeMessages(0);
     }
 
     public void showNextScene(Bitmap bitmap , int playDuration , int transitionDuration , int rotation) {
