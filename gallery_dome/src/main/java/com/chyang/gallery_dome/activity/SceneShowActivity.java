@@ -2,12 +2,14 @@ package com.chyang.gallery_dome.activity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.chyang.gallery_dome.R;
@@ -36,25 +38,28 @@ public class SceneShowActivity extends AppCompatActivity implements BitmapSceneV
         btStart = (Button) findViewById(R.id.bt_start);
         findViewById(R.id.bt_stop).setOnClickListener(this);
         btStart.setOnClickListener(this);
+        int height  = getResources().getDimensionPixelOffset(R.dimen.canvas_height);
+        WindowManager wm1 = this.getWindowManager();
+        int width1 = wm1.getDefaultDisplay().getWidth();
+        int height1 = wm1.getDefaultDisplay().getHeight();
+        mSceneShowView.setCanvasWidth(width1);
+        mSceneShowView.setCanvasHeight(height);
+        startBitmap();
 
     }
 
     @Override
     public void onCompletion() {
         Log.d("chyang","onCompletion");
-        if(isPlay) {
             startBitmap();
-        }
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
         if(id == R.id.bt_start) {
-            isPlay = true;
             startBitmap();
         } else {
-            isPlay = false;
           //  mSceneShowView.stopShowScene();
         }
     }
@@ -68,13 +73,40 @@ public class SceneShowActivity extends AppCompatActivity implements BitmapSceneV
         }
 
         Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), id);
+         mBitmap = resizeImage(mBitmap, 1080, 900 );
         if(mBitmap != null) {
-            mSceneShowView.showNextScene(mBitmap, 3000,1000, 0);
+
+            mSceneShowView.setShowBitmap(mBitmap);
+
+
+          // mSceneShowView.showNextScene(mBitmap, 3000,1000, 0);
+
         }
         index++;
         if(index == 19) {
             index = 1;
         }
+    }
+
+
+    public Bitmap resizeImage(Bitmap bitmap, int w, int h) {
+
+        Bitmap BitmapOrg = bitmap;
+        int width = BitmapOrg.getWidth();
+        int height = BitmapOrg.getHeight();
+        int newWidth = w;
+        int newHeight = h;
+
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+        // if you want to rotate the Bitmap
+        // matrix.postRotate(45);
+        Bitmap resizedBitmap = Bitmap.createBitmap(BitmapOrg, 0, 0, width,
+                height, matrix, true);
+        return resizedBitmap;
 
     }
 }

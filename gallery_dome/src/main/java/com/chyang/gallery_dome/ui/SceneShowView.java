@@ -132,10 +132,8 @@ public class SceneShowView extends View {
         if (mPrevBitmap != null && alpha != 1f) {
             requestRender |= mPrevAnimation.calculate(animTime);
             canvas.save();
-           // canvas.setAlpha(1f - alpha);
              int color = (int) (255 * (1f - alpha));
             mPaint.setAlpha(color);
-           // mPaint.setAlpha((int) (1f - alpha));
             mPrevAnimation.apply(canvas);
             canvas.rotate(mPrevRotation, 0, 0);
             canvas.drawBitmap(mPrevBitmap , -mPrevBitmap.getWidth() / 2, -mPrevBitmap.getHeight() / 2,mPaint);
@@ -144,18 +142,11 @@ public class SceneShowView extends View {
         if (mCurrentBitmap != null) {
             requestRender |= mCurrentAnimation.calculate(animTime);
             canvas.save();
-          //  canvas.setAlpha(alpha);
-            //setAlpha(alpha);
-
             int color = (int) (255 *  alpha);
             mPaint.setAlpha(color);
             mCurrentAnimation.apply(canvas);
             canvas.rotate(mCurrentRotation, 0, 0);
-//            mCurrentTexture.draw(canvas, -mCurrentTexture.getWidth() / 2,
-//                    -mCurrentTexture.getHeight() / 2);
-
             canvas.drawBitmap(mCurrentBitmap ,-mCurrentBitmap.getWidth() / 2, -mCurrentBitmap.getHeight() / 2,mPaint);
-
             canvas.restore();
         }
 

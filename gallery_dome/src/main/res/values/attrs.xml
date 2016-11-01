@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="bitmap_scene_value" >
+        <attr name="canvasWidth" format="integer" ></attr>
+        <attr name="canvasHeight" format="integer"></attr>
+    </declare-styleable>
+</resources>

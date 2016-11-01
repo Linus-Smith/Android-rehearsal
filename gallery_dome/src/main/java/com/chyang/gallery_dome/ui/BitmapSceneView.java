@@ -20,9 +20,10 @@ public class BitmapSceneView extends ImageView implements BitmapSceneShow.LinkSc
         void  onCompletion();
     }
 
-    private boolean isPlaying = false;
     private BitmapSceneShow mSceneShow;
+    private Bitmap mCurrentBitmap;
     private OnCompletionListener mOnCompletionListener;
+    private boolean isPlayer = false;
 
 
 
@@ -49,26 +50,38 @@ public class BitmapSceneView extends ImageView implements BitmapSceneShow.LinkSc
         mSceneShow.setLinkSceneListener(this);
      }
 
-   public void setOnCompletionListener(OnCompletionListener onCompletionListener) {
+    public void setOnCompletionListener(OnCompletionListener onCompletionListener) {
        mOnCompletionListener = onCompletionListener;
    }
 
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
-        mSceneShow.setWidth(getWidth());
-        mSceneShow.setHeight(getHeight());
+    public void setCanvasWidth(int canvasWidth) {
+        mSceneShow.setWidth(canvasWidth);
+    }
 
+    public void setCanvasHeight(int canvasHeight) {
+        mSceneShow.setHeight(canvasHeight);
+    }
+
+    public void setShowBitmap(Bitmap bitmap) {
+        mCurrentBitmap = bitmap;
+        isPlayer = false;
+        setImageBitmap(mCurrentBitmap);
+        invalidate();
     }
 
     public void showNextScene(Bitmap bitmap , int playDuration , int transitionDuration , int rotation) {
         mHandler.sendEmptyMessageDelayed(0,playDuration);
+        isPlayer = true;
         mSceneShow.next(bitmap, playDuration, transitionDuration, rotation);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        mSceneShow.onDraw(canvas);
+        if(isPlayer) {
+            mSceneShow.onDraw(canvas);
+        } else {
+            super.onDraw(canvas);
+        }
     }
 
     @Override
