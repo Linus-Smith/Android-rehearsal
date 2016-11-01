@@ -6,9 +6,28 @@
     android:layout_height="match_parent"
     tools:context="com.chyang.gallery_dome.activity.SceneShowActivity">
 
-    <com.chyang.gallery_dome.ui.SceneShowView
+    <com.chyang.gallery_dome.ui.BitmapSceneView
         android:id="@+id/sv"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="300dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/bt_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开始"/>
+
+        <Button
+            android:id="@+id/bt_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="停止"/>
+    </LinearLayout>
 
 </RelativeLayout>

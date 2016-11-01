@@ -126,7 +126,6 @@ public class BitmapShowThread extends Thread {
     public void run() {
         while(isRun) {
             Canvas canvas = null;
-            System.out.println(isRun+"=======0");
             try {
                 synchronized (mSurfaceHolder) {
 
