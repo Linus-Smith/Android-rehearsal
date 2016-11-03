@@ -48,6 +48,7 @@ public class BigBitmapShow extends AppCompatActivity {
         BitmapFactory.Options bmpOptionsFOptions = new BitmapFactory.Options();
         bmpOptionsFOptions.inSampleSize = 1;
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.re, bmpOptionsFOptions);
+       int b = bitmap.getByteCount();
         mImageView.setImageBitmap(bitmap);
     }
 
