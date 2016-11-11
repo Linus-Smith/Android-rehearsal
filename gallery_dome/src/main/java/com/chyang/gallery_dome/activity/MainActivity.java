@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.bt_sufaceview_dome1).setOnClickListener(this);
         findViewById(R.id.bt_videoview_dome1).setOnClickListener(this);
         findViewById(R.id.bt_bitmap_show).setOnClickListener(this);
+        findViewById(R.id.bt_sub).setOnClickListener(this);
 
     }
 
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mIntent.setClass(this, VideoViewDome1.class);
         } else if(id == R.id.bt_bitmap_show) {
             mIntent.setClass(this, StoryGalleryShowActivity.class);
+        } else if(id == R.id.bt_sub) {
+            mIntent.setClass(this, StoryEditActivity.class);
         }
         startActivity(mIntent);
     }

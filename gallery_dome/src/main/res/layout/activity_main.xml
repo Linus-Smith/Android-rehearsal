@@ -35,4 +35,10 @@
         android:layout_height="wrap_content"
         android:text="图片视频混合"/>
 
+    <Button
+        android:id="@+id/bt_sub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="高级编辑主题"/>
+
 </LinearLayout>
