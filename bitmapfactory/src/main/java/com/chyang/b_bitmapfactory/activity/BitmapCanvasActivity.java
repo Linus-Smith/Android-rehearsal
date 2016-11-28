@@ -23,6 +23,7 @@ public class BitmapCanvasActivity extends AppCompatActivity implements View.OnCl
         findViewById(R.id.bt_x).setOnClickListener(this);
         findViewById(R.id.bt_y).setOnClickListener(this);
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ag);
+        System.out.println(bitmap.getWidth()+"===="+bitmap.getHeight());
         mBitmapCanvasView.setBitmap(bitmap);
         Path path = new Path();
     }

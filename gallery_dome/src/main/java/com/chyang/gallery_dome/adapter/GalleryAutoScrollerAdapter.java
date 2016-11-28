@@ -1,13 +1,17 @@
 package com.chyang.gallery_dome.adapter;
 
+import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import com.chyang.gallery_dome.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,10 +23,14 @@ public class GalleryAutoScrollerAdapter  extends RecyclerView.Adapter{
     private List<Integer> mList;
     private Context context;
     private LayoutInflater mLayoutInflater;
+    private boolean isChange = false;
+    private int index = 0;
+    private RecyclerView mRecyclerView;
 
-    public GalleryAutoScrollerAdapter(Context context) {
+    public GalleryAutoScrollerAdapter(Context context, RecyclerView recyclerView) {
         this.context = context;
         mLayoutInflater = LayoutInflater.from(context);
+        this.mRecyclerView = recyclerView;
     }
 
     public void setData(List<Integer> mData) {
@@ -36,9 +44,16 @@ public class GalleryAutoScrollerAdapter  extends RecyclerView.Adapter{
         return mViewHolder;
     }
 
+    public void onChangePosition(boolean isChange) {
+        this.isChange = isChange;
+        notifyDataSetChanged();
+    }
+
+
+
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-          ViewHolder mViewHolder = (ViewHolder) holder;
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+          final ViewHolder mViewHolder = (ViewHolder) holder;
         mViewHolder.iv.setBackgroundColor(mList.get(position));
     }
 

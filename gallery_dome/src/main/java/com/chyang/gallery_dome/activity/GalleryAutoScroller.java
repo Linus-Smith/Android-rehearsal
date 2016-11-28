@@ -1,6 +1,8 @@
 package com.chyang.gallery_dome.activity;
 
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import android.widget.VideoView;
 
 import com.chyang.gallery_dome.R;
 import com.chyang.gallery_dome.adapter.GalleryAutoScrollerAdapter;
+import com.chyang.gallery_dome.utils.MyDecortion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,15 +24,12 @@ public class GalleryAutoScroller extends AppCompatActivity implements View.OnCli
 
     private RecyclerView rvGallery;
     private LinearLayoutManager manager;
-
-
-    private Handler mHandler = new Handler() {
-        private  int  i =  1;
+    private Handler mHandler  = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-
-            rvGallery.scrollBy(i, 0);
-            mHandler.sendEmptyMessage(0);
+            super.handleMessage(msg);
+            rvGallery.scrollBy(1,0);
+             //mHandler.sendEmptyMessageDelayed(0, 80);
         }
     };
 
@@ -48,11 +48,10 @@ public class GalleryAutoScroller extends AppCompatActivity implements View.OnCli
             mColors.add(getRandomColor());
         }
 
-        GalleryAutoScrollerAdapter mGalleryAutoScrollerAdapter = new GalleryAutoScrollerAdapter(this);
+        final GalleryAutoScrollerAdapter mGalleryAutoScrollerAdapter = new GalleryAutoScrollerAdapter(this, rvGallery);
         mGalleryAutoScrollerAdapter.setData(mColors);
 
         rvGallery.setAdapter(mGalleryAutoScrollerAdapter);
-         mHandler.sendEmptyMessage(0);
     }
 
 
@@ -64,7 +63,6 @@ public class GalleryAutoScroller extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        System.out.println(rvGallery.getScrollX()+"====onClick=---");
 
     }
 }
