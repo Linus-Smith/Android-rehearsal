@@ -33,6 +33,7 @@ public class BitmapSceneShow implements VIPlayControl{
 
     private int width = 0;
     private int height = 0;
+    private boolean isShowTransition = false;
 
     private Context mContext;
     private Paint mPaint;
@@ -88,7 +89,7 @@ public class BitmapSceneShow implements VIPlayControl{
 
         mCurrentRotation = rotation;
         mCurrentBitmap = resizeImage(bitmap, width, height);
-
+        isShowTransition = true;
         if (panoramicFlag) {
             mCurrentAnimation = new PanoramicAnimation(mCurrentBitmap, playDuration, rotation);
         } else {
@@ -199,7 +200,7 @@ public class BitmapSceneShow implements VIPlayControl{
         long animTime = System.currentTimeMillis();
         boolean requestRender = mTransitionAnimation.calculate(animTime);
         float alpha = mPrevBitmap == null ? 1f : mTransitionAnimation.get();
-        if (mPrevAnimation != null && alpha != 1f) {
+        if (mPrevAnimation != null && alpha != 1f && isShowTransition) {
             canvas.save();
             int color = (int) (255 * (1f - alpha));
             mPaint.setAlpha(color);
@@ -210,8 +211,11 @@ public class BitmapSceneShow implements VIPlayControl{
         if (mCurrentAnimation != null) {
             requestRender |= mCurrentAnimation.calculate(animTime);
             canvas.save();
-            int color = (int) (255 * alpha);
-            mPaint.setAlpha(color);
+            if(alpha == 1f) {isShowTransition = false;}
+            if(isShowTransition) {
+                int color = (int) (255 * alpha);
+                mPaint.setAlpha(color);
+            }
             mCurrentAnimation.apply(canvas);
             canvas.rotate(mCurrentRotation, 0, 0);
             canvas.restore();
