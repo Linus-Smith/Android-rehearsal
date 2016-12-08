@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.yang.linus.android_rehearsal.R;
+import com.yang.linus.R;
 import com.yang.linus.view.BitmapSceneView;
 
 public class BitmapShowActivity extends AppCompatActivity implements BitmapSceneView.OnCompletionListener , View.OnClickListener{
