@@ -16,17 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.FProviderActivity"></activity>
 
         <provider
-            android:authorities="com"
             android:name="android.support.v4.content.FileProvider"
-             android:grantUriPermissions="true"
-            android:exported="false">
+            android:authorities="com"
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/filepaths"/>
+                android:resource="@xml/filepaths" />
         </provider>
+
+        <activity android:name=".activity.CanvasRotate"></activity>
     </application>
 
 </manifest>

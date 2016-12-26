@@ -8,9 +8,10 @@
     tools:context="com.yang.mdevelopers.MainActivity">
 
     <Button
-        android:id="@+id/bt_file_provider"
+        android:id="@+id/bt_canvas_rotate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="FileProvider"/>
+        android:text="canvas_rotate"/>
+
 
 </LinearLayout>
