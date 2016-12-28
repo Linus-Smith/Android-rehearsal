@@ -8,6 +8,7 @@ import android.view.View;
 import com.yang.linus.activity.BitmapShowActivity;
 import com.yang.linus.R;
 import com.yang.linus.activity.CatViewApiActivity;
+import com.yang.linus.activity.VideoPlayActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById(R.id.bt_anim).setOnClickListener(this);
         findViewById(R.id.bt_view_api).setOnClickListener(this);
+        findViewById(R.id.bt_video_play).setOnClickListener(this);
     }
 
 
@@ -29,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt_view_api:
                 mIntent.setClass(this, CatViewApiActivity.class);
+                break;
+            case R.id.bt_video_play:
+                mIntent.setClass(this, VideoPlayActivity.class);
                 break;
         }
 
