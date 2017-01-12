@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.yang.mdevelopers.activity.CanvasRotate;
+import com.yang.mdevelopers.activity.ContentProviderActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.bt_canvas_rotate).setOnClickListener(this);
+        findViewById(R.id.bt_provider).setOnClickListener(this);
     }
 
     @Override
@@ -24,6 +26,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.bt_canvas_rotate:
                 mIntent.setClass(this, CanvasRotate.class);
+                break;
+            case R.id.bt_provider:
+                mIntent.setClass(this, ContentProviderActivity.class);
                 break;
         }
         startActivity(mIntent);

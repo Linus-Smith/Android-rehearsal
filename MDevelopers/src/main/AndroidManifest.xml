@@ -27,7 +27,8 @@
                 android:resource="@xml/filepaths" />
         </provider>
 
-        <activity android:name=".activity.CanvasRotate"></activity>
+        <activity android:name=".activity.CanvasRotate" />
+        <activity android:name=".activity.ContentProviderActivity"></activity>
     </application>
 
 </manifest>

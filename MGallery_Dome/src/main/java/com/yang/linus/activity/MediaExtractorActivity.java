@@ -8,17 +8,15 @@ import android.view.View;
 
 import com.yang.linus.R;
 
-import java.io.File;
-import java.io.FileDescriptor;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-public class VideoPlayActivity extends AppCompatActivity implements View.OnClickListener {
+public class MediaExtractorActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video_play);
+        setContentView(R.layout.activity_media_extractor_play);
         findViewById(R.id.bt_extractor).setOnClickListener(this);
     }
 

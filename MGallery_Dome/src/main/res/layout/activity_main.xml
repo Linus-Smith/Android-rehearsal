@@ -21,9 +21,16 @@
         android:text="cat view api"/>
 
     <Button
-        android:id="@+id/bt_video_play"
+        android:id="@+id/bt_extractor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="视频播放"/>
+        android:text="MediaExtractor使用"/>
+
+    <Button
+        android:id="@+id/bt_surface"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SurfaceView使用"/>
+
 
 </LinearLayout>
