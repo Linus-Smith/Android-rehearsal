@@ -28,7 +28,8 @@
         </provider>
 
         <activity android:name=".activity.CanvasRotate" />
-        <activity android:name=".activity.ContentProviderActivity"></activity>
+        <activity android:name=".activity.ContentProviderActivity" />
+        <activity android:name=".activity.ThreadDomeOne"></activity>
     </application>
 
 </manifest>

@@ -17,6 +17,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="content Provider"/>
+    <Button
+        android:id="@+id/bt_thread_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="生产者消费者"/>
 
 
 </LinearLayout>
