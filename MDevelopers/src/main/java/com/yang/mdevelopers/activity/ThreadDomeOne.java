@@ -3,13 +3,9 @@ package com.yang.mdevelopers.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 
 import com.yang.mdevelopers.R;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class ThreadDomeOne extends AppCompatActivity {
 

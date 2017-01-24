@@ -29,7 +29,8 @@
 
         <activity android:name=".activity.CanvasRotate" />
         <activity android:name=".activity.ContentProviderActivity" />
-        <activity android:name=".activity.ThreadDomeOne"></activity>
+        <activity android:name=".activity.ThreadDomeOne" />
+        <activity android:name=".activity.JniDomeActivity"></activity>
     </application>
 
 </manifest>

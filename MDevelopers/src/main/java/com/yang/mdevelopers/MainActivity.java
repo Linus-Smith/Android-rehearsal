@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.yang.mdevelopers.activity.CanvasRotate;
 import com.yang.mdevelopers.activity.ContentProviderActivity;
+import com.yang.mdevelopers.activity.JniDomeActivity;
 import com.yang.mdevelopers.activity.ThreadDomeOne;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.bt_canvas_rotate).setOnClickListener(this);
         findViewById(R.id.bt_provider).setOnClickListener(this);
         findViewById(R.id.bt_thread_one).setOnClickListener(this);
+        findViewById(R.id.bt_jni_dome).setOnClickListener(this);
     }
 
     @Override
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt_thread_one:
                 mIntent.setClass(this, ThreadDomeOne.class);
+                break;
+            case R.id.bt_jni_dome:
+                mIntent.setClass(this, JniDomeActivity.class);
                 break;
         }
         startActivity(mIntent);
