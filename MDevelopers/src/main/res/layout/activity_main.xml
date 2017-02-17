@@ -29,5 +29,10 @@
         android:layout_height="wrap_content"
         android:text="JNI DOME"/>
 
+    <Button
+        android:id="@+id/bt_scale_gesture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="手势缩放"/>
 
 </LinearLayout>
