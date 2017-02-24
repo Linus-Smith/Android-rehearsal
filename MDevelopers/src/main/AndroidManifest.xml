@@ -31,7 +31,8 @@
         <activity android:name=".activity.ContentProviderActivity" />
         <activity android:name=".activity.ThreadDomeOne" />
         <activity android:name=".activity.JniDomeActivity" />
-        <activity android:name=".activity.ScaleGestureActivity"></activity>
+        <activity android:name=".activity.ScaleGestureActivity" />
+        <activity android:name=".activity.FragmentDomeActivity"></activity>
     </application>
 
 </manifest>

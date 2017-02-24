@@ -173,7 +173,8 @@ public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnS
             // 图片移动至屏幕中心
             mScaleMatrix.postTranslate((width - dw) / 2, (height - dh) / 2);
             mScaleMatrix.postScale(scale, scale, getWidth() / 2, getHeight() / 2);
-
+             mScaleMatrix.setRotate(50);
+            mScaleMatrix.postTranslate(400, 0);
             System.out.println(mScaleMatrix+"===========");
             setImageMatrix(mScaleMatrix);
             once = false;

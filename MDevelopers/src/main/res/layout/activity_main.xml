@@ -34,5 +34,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="手势缩放"/>
+    <Button
+        android:id="@+id/bt_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="fragment研究"/>
 
 </LinearLayout>
