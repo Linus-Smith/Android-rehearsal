@@ -17,7 +17,7 @@ import android.widget.ImageView;
  * Created by Linus on 2017/2/16.
  */
 
-public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnScaleGestureListener, View.OnTouchListener, ViewTreeObserver.OnGlobalLayoutListener{
+public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnScaleGestureListener, View.OnTouchListener, ViewTreeObserver.OnGlobalLayoutListener {
 
     private static final String TAG = ZoomImageView.class.getSimpleName();
 
@@ -41,13 +41,11 @@ public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnS
 
     private final Matrix mScaleMatrix = new Matrix();
 
-    public ZoomImageView(Context context)
-    {
+    public ZoomImageView(Context context) {
         this(context, null);
     }
 
-    public ZoomImageView(Context context, AttributeSet attrs)
-    {
+    public ZoomImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         super.setScaleType(ScaleType.MATRIX);
         mScaleGestureDetector = new ScaleGestureDetector(context, this);
@@ -55,8 +53,7 @@ public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnS
     }
 
     @Override
-    public boolean onScale(ScaleGestureDetector detector)
-    {
+    public boolean onScale(ScaleGestureDetector detector) {
         float scale = getScale();
         float scaleFactor = detector.getScaleFactor();
 
@@ -67,17 +64,14 @@ public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnS
          * 缩放的范围控制
          */
         if ((scale < SCALE_MAX && scaleFactor > 1.0f)
-                || (scale > initScale && scaleFactor < 1.0f))
-        {
+                || (scale > initScale && scaleFactor < 1.0f)) {
             /**
              * 最大值最小值判断
              */
-            if (scaleFactor * scale < initScale)
-            {
+            if (scaleFactor * scale < initScale) {
                 scaleFactor = initScale / scale;
             }
-            if (scaleFactor * scale > SCALE_MAX)
-            {
+            if (scaleFactor * scale > SCALE_MAX) {
                 scaleFactor = SCALE_MAX / scale;
             }
             /**
@@ -97,13 +91,11 @@ public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnS
     }
 
     @Override
-    public void onScaleEnd(ScaleGestureDetector detector)
-    {
+    public void onScaleEnd(ScaleGestureDetector detector) {
     }
 
     @Override
-    public boolean onTouch(View v, MotionEvent event)
-    {
+    public boolean onTouch(View v, MotionEvent event) {
         return mScaleGestureDetector.onTouchEvent(event);
 
     }
@@ -114,33 +106,28 @@ public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnS
      *
      * @return
      */
-    public final float getScale()
-    {
+    public final float getScale() {
         mScaleMatrix.getValues(matrixValues);
         return matrixValues[Matrix.MSCALE_X];
     }
 
     @Override
-    protected void onAttachedToWindow()
-    {
+    protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         getViewTreeObserver().addOnGlobalLayoutListener(this);
     }
 
     @SuppressWarnings("deprecation")
     @Override
-    protected void onDetachedFromWindow()
-    {
+    protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
 
     @Override
-    public void onGlobalLayout()
-    {
+    public void onGlobalLayout() {
 
-        if (once)
-        {
+        if (once) {
             Drawable d = getDrawable();
             if (d == null)
                 return;
@@ -151,31 +138,22 @@ public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnS
             int dw = d.getIntrinsicWidth();
             int dh = d.getIntrinsicHeight();
             float scale = 1.0f;
-
             // 如果图片的宽或者高大于屏幕，则缩放至屏幕的宽或者高
-            if (dw > width && dh <= height)  //图片宽度大于屏幕宽度，和图片高度小于等于屏幕高度
-            {
-                scale = width * 1.0f / dw;   //按照宽度缩放
+            if (dw > width && dh <= height) {
+                scale = width * 1.0f / dw;
             }
-
-            if (dh > height && dw <= width) //图片高度大于屏幕高度，和图片
-            {
-                scale = height * 1.0f / dh;  //
+            if (dh > height && dw <= width) {
+                scale = height * 1.0f / dh;
             }
-
             // 如果宽和高都大于屏幕，则让其按按比例适应屏幕大小
-            if (dw > width && dh > height)
-            {
+            if (dw > width && dh > height) {
                 scale = Math.min(dw * 1.0f / width, dh * 1.0f / height);
             }
-
             initScale = scale;
             // 图片移动至屏幕中心
             mScaleMatrix.postTranslate((width - dw) / 2, (height - dh) / 2);
-            mScaleMatrix.postScale(scale, scale, getWidth() / 2, getHeight() / 2);
-             mScaleMatrix.setRotate(50);
-            mScaleMatrix.postTranslate(400, 0);
-            System.out.println(mScaleMatrix+"===========");
+            mScaleMatrix
+                    .postScale(scale, scale, getWidth() / 2, getHeight() / 2);
             setImageMatrix(mScaleMatrix);
             once = false;
         }

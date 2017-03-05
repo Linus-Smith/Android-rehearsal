@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context="com.yang.mdevelopers.activity.ScaleGestureActivity">
 
-    <com.yang.mdevelopers.view.ZoomImageView
+    <com.yang.mdevelopers.view.ImageShow
+        android:id="@+id/pv_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@mipmap/timg"/>
-
+></com.yang.mdevelopers.view.ImageShow>
 </RelativeLayout>
