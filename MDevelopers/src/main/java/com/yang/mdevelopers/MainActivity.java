@@ -9,6 +9,8 @@ import com.yang.mdevelopers.activity.CanvasRotate;
 import com.yang.mdevelopers.activity.ContentProviderActivity;
 import com.yang.mdevelopers.activity.FragmentDomeActivity;
 import com.yang.mdevelopers.activity.JniDomeActivity;
+import com.yang.mdevelopers.activity.JobServiceDomeActivity;
+import com.yang.mdevelopers.activity.PhotoPreviewActivity;
 import com.yang.mdevelopers.activity.ScaleGestureActivity;
 import com.yang.mdevelopers.activity.ThreadDomeOne;
 
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.bt_jni_dome).setOnClickListener(this);
         findViewById(R.id.bt_scale_gesture).setOnClickListener(this);
         findViewById(R.id.bt_fragment).setOnClickListener(this);
+        findViewById(R.id.bt_photo_preview).setOnClickListener(this);
+        findViewById(R.id.bt_job_service).setOnClickListener(this);
     }
 
     @Override
@@ -49,6 +53,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt_fragment:
                 mIntent.setClass(this, FragmentDomeActivity.class);
+                break;
+            case R.id.bt_photo_preview:
+                mIntent.setClass(this, PhotoPreviewActivity.class);
+                break;
+            case R.id.bt_job_service:
+                mIntent.setClass(this, JobServiceDomeActivity.class);
                 break;
         }
         startActivity(mIntent);

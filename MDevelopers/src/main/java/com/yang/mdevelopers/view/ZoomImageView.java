@@ -33,6 +33,7 @@ public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnS
     private final float[] matrixValues = new float[9];
 
     private boolean once = true;
+    float mStartFocusX, mStartFocusY;
 
     /**
      * 缩放的手势检测
@@ -74,6 +75,8 @@ public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnS
             if (scaleFactor * scale > SCALE_MAX) {
                 scaleFactor = SCALE_MAX / scale;
             }
+
+
             /**
              * 设置缩放比例
              */
@@ -87,6 +90,8 @@ public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnS
 
     @Override
     public boolean onScaleBegin(ScaleGestureDetector detector) {
+        mStartFocusX = detector.getFocusX();
+        mStartFocusY = detector.getFocusY();
         return true;
     }
 
@@ -96,6 +101,8 @@ public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnS
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+
+
         return mScaleGestureDetector.onTouchEvent(event);
 
     }
@@ -152,8 +159,7 @@ public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnS
             initScale = scale;
             // 图片移动至屏幕中心
             mScaleMatrix.postTranslate((width - dw) / 2, (height - dh) / 2);
-            mScaleMatrix
-                    .postScale(scale, scale, getWidth() / 2, getHeight() / 2);
+            mScaleMatrix.postScale(scale, scale, getWidth() / 2, getHeight() / 2);
             setImageMatrix(mScaleMatrix);
             once = false;
         }

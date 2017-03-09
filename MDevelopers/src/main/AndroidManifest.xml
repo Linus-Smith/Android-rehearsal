@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yang.mdevelopers">
 
+    <uses-permission android:name="android.permission.BATTERY_STATS"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -31,8 +33,22 @@
         <activity android:name=".activity.ContentProviderActivity" />
         <activity android:name=".activity.ThreadDomeOne" />
         <activity android:name=".activity.JniDomeActivity" />
-        <activity android:name=".activity.ScaleGestureActivity" />
-        <activity android:name=".activity.FragmentDomeActivity"></activity>
+        <activity
+            android:name=".activity.ScaleGestureActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activity.FragmentDomeActivity" />
+        <activity android:name=".activity.PhotoPreviewActivity" />
+        <activity android:name=".activity.JobServiceDomeActivity"></activity>
+        <service android:name=".service.MyJob"
+            android:permission="android.permission.BIND_JOB_SERVICE"></service>
+
+        <receiver android:name=".broadcast.BatteryBroadcast"
+            android:enabled="true">
+            <intent-filter>
+            <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

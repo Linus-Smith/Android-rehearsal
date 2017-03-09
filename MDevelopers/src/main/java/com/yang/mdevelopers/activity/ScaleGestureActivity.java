@@ -7,19 +7,20 @@ import android.os.Bundle;
 
 import com.yang.mdevelopers.R;
 import com.yang.mdevelopers.view.ImageShow;
+import com.yang.mdevelopers.view.ZoomImageView;
 
 public class ScaleGestureActivity extends AppCompatActivity {
 
 
-    private ImageShow pvView;
+    private ZoomImageView pvView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scale_gesture);
-//        pvView = () findViewById(R.id.pv_view);
-//        Bitmap mBitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.timg);
-//        pvView.setShowBitmap(mBitmap);
+        pvView = (ZoomImageView) findViewById(R.id.pv_view);
+        Bitmap mBitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.timg);
+        pvView.setImageBitmap(mBitmap);
     }
 }
