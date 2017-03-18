@@ -3,6 +3,7 @@ package com.yang.mdevelopers;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 
 import com.yang.mdevelopers.activity.CanvasRotate;
@@ -62,5 +63,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
         startActivity(mIntent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        System.out.println("来了哈哈");
+        return super.onCreateOptionsMenu(menu);
     }
 }

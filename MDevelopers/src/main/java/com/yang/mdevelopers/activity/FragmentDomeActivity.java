@@ -22,15 +22,20 @@ public class FragmentDomeActivity extends AppCompatActivity {
 
         FragmentManager  fragmentManager = getSupportFragmentManager();
         FragmentTransaction mFragmentTransaction = fragmentManager.beginTransaction();
+        mFragmentTransaction.replace(R.id.activity_fragment_dome, new FragmentOne());
+        mFragmentTransaction.commit();
 
     }
 
-//    class FragmentOne extends Fragment {
-//
-//        @Nullable
-//        @Override
-//        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//            return super.onCreateView(inflater, container, savedInstanceState);
-//        }
-//    }
+     public static  class FragmentOne extends Fragment {
+
+        @Nullable
+        @Override
+        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            TextView mTextView = new TextView(getActivity());
+            mTextView.setTextSize(100);
+            mTextView.setText("哈哈哈我是Text");
+            return mTextView;
+        }
+    }
 }
