@@ -8,6 +8,7 @@ import android.view.View;
 import com.yang.linus.activity.BitmapShowActivity;
 import com.yang.linus.activity.CatViewApiActivity;
 import com.yang.linus.activity.MediaExtractorActivity;
+import com.yang.linus.activity.RecyclerViewDomeActivity;
 import com.yang.linus.activity.SurfaceViewActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.bt_view_api).setOnClickListener(this);
         findViewById(R.id.bt_extractor).setOnClickListener(this);
         findViewById(R.id.bt_surface).setOnClickListener(this);
+        findViewById(R.id.bt_recycler).setOnClickListener(this);
     }
 
 
@@ -38,6 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt_surface:
                 mIntent.setClass(this, SurfaceViewActivity.class);
+                break;
+            case R.id.bt_recycler:
+                mIntent.setClass(this, RecyclerViewDomeActivity.class);
                 break;
         }
 

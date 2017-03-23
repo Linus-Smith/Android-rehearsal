@@ -101,8 +101,6 @@ public class ZoomImageView extends ImageView implements ScaleGestureDetector.OnS
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-
-
         return mScaleGestureDetector.onTouchEvent(event);
 
     }
