@@ -7,7 +7,10 @@ import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
+import android.widget.Scroller;
 
 /**
  * Created by linusyang on 16-12-8.
@@ -16,6 +19,7 @@ import android.view.View;
 public class CatApiDomeView extends View {
 
     private Paint mPaint;
+    private VelocityTracker mVelocityTracker;
 
     public CatApiDomeView(Context context) {
         this(context, null);
@@ -28,12 +32,19 @@ public class CatApiDomeView extends View {
     public CatApiDomeView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mPaint = new Paint();
+        mVelocityTracker = VelocityTracker.obtain();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        System.out.println(event.getX()+"==========="+event.getY());
+        return true;
     }
 
     @Override

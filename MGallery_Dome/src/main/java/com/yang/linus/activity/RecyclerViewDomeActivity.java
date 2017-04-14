@@ -2,16 +2,19 @@ package com.yang.linus.activity;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.yang.linus.R;
+import com.yang.linus.Utils.CrackingMoveHelper;
 
 import java.util.Random;
 
@@ -20,6 +23,7 @@ public class RecyclerViewDomeActivity extends AppCompatActivity {
     private RecyclerView mRvView;
     private MyAdapter myAdapter;
     private LinearLayoutManager mManager;
+    private CrackingMoveHelper mCrackingMoveHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +31,12 @@ public class RecyclerViewDomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view_dome);
         mRvView = (RecyclerView) findViewById(R.id.rv_view);
         myAdapter = new MyAdapter(this);
-        mManager = new LinearLayoutManager(this);
-        mManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+//        mManager = new MyLayoutManager(this);
+//        mManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRvView.setAdapter(myAdapter);
-        mRvView.setLayoutManager(mManager);
+       // mRvView.setLayoutManager(mManager);
+        mCrackingMoveHelper = new CrackingMoveHelper();
+        mCrackingMoveHelper.attachToRecyclerView(mRvView, 90, 180);
     }
 
   class MyAdapter extends RecyclerView.Adapter {
@@ -56,6 +62,7 @@ public class RecyclerViewDomeActivity extends AppCompatActivity {
               MyHolder myHolder = (MyHolder) holder;
               //myHolder.iv.setImageResource(R.mipmap.image2);
               myHolder.iv.setBackgroundColor(getColor());
+              System.out.println("width:"+ myHolder.iv.getWidth()+"============"+ myHolder.iv.getHeight());
           }
       }
 
@@ -78,5 +85,46 @@ public class RecyclerViewDomeActivity extends AppCompatActivity {
           }
       }
   }
+
+     class MyLayoutManager extends LinearLayoutManager {
+
+         public MyLayoutManager(Context context) {
+             super(context);
+         }
+
+         public MyLayoutManager(Context context, int orientation, boolean reverseLayout) {
+             super(context, orientation, reverseLayout);
+         }
+
+         public MyLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+             super(context, attrs, defStyleAttr, defStyleRes);
+         }
+
+         @Override
+         public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
+             super.onLayoutChildren(recycler, state);
+         }
+     }
+
+    class MyImageView extends ImageView {
+
+        public MyImageView(Context context) {
+            super(context);
+        }
+
+        public MyImageView(Context context, AttributeSet attrs) {
+            super(context, attrs);
+        }
+
+        public MyImageView(Context context, AttributeSet attrs, int defStyleAttr) {
+            super(context, attrs, defStyleAttr);
+        }
+
+        public MyImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+            super(context, attrs, defStyleAttr, defStyleRes);
+        }
+    }
+
+
 
 }
