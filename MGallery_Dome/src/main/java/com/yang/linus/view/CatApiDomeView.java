@@ -39,6 +39,7 @@ public class CatApiDomeView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
+
     }
 
     @Override
@@ -64,5 +65,13 @@ public class CatApiDomeView extends View {
         }) ;
 
         mPaint.setColorFilter(new ColorMatrixColorFilter((colorMatrix)));
+        System.out.println("来了哈哈哈哈 ---333");
+       // requestLayout();
+        invalidate();
+    }
+
+    @Override
+    public boolean isLayoutRequested() {
+        return super.isLayoutRequested();
     }
 }

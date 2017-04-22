@@ -31,12 +31,12 @@ public class RecyclerViewDomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view_dome);
         mRvView = (RecyclerView) findViewById(R.id.rv_view);
         myAdapter = new MyAdapter(this);
-//        mManager = new MyLayoutManager(this);
+        mManager = new MyLayoutManager(this);
 //        mManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRvView.setAdapter(myAdapter);
-       // mRvView.setLayoutManager(mManager);
+        mRvView.setLayoutManager(mManager);
         mCrackingMoveHelper = new CrackingMoveHelper();
-        mCrackingMoveHelper.attachToRecyclerView(mRvView, 90, 180);
+        mCrackingMoveHelper.attachToRecyclerView(mRvView);
     }
 
   class MyAdapter extends RecyclerView.Adapter {
@@ -53,6 +53,7 @@ public class RecyclerViewDomeActivity extends AppCompatActivity {
       public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
           View view  =  LayoutInflater.from(mContext).inflate(R.layout.item_recy_dome, parent, false);
           MyHolder myHolder = new MyHolder(view);
+
           return myHolder;
       }
 
@@ -62,7 +63,8 @@ public class RecyclerViewDomeActivity extends AppCompatActivity {
               MyHolder myHolder = (MyHolder) holder;
               //myHolder.iv.setImageResource(R.mipmap.image2);
               myHolder.iv.setBackgroundColor(getColor());
-              System.out.println("width:"+ myHolder.iv.getWidth()+"============"+ myHolder.iv.getHeight());
+
+
           }
       }
 
