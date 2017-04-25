@@ -28,6 +28,11 @@ public class CrackingMoveHelper extends RecyclerView.ItemDecoration implements R
         mMyOnScrollListener = new MyOnScrollListener();
     }
 
+
+    public CrackingLayoutManager getLayoutManager() {
+        return mLayoutManager;
+    }
+
     public void attachToRecyclerView(@Nullable RecyclerView recyclerView) {
         if(mRecyclerView == recyclerView) {
             return; // nothing to do;
@@ -67,8 +72,8 @@ public class CrackingMoveHelper extends RecyclerView.ItemDecoration implements R
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-        mRecyclerView.requestLayout();
-        mRecyclerView.invalidate();
+//        mRecyclerView.requestLayout();
+//        mRecyclerView.invalidate();
     }
 
     @Override
@@ -91,6 +96,10 @@ public class CrackingMoveHelper extends RecyclerView.ItemDecoration implements R
         @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
             super.onScrollStateChanged(recyclerView, newState);
+            if(newState == RecyclerView.SCROLL_STATE_IDLE) {
+              int position =  mLayoutManager.findFirstVisibleItemPosition();
+                mLayoutManager.scrollToPosition(position);
+            }
         }
 
         @Override

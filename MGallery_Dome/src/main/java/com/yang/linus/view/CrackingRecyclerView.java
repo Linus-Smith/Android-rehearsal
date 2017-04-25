@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
@@ -45,14 +46,17 @@ public class CrackingRecyclerView extends RecyclerView {
         super.measureChildWithMargins(child, parentWidthMeasureSpec, widthUsed, parentHeightMeasureSpec, heightUsed);
     }
 
-
+    @Override
+    public boolean onTouchEvent(MotionEvent e) {
+        return super.onTouchEvent(e);
+    }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
     }
 
-    //
+//
 //    @Override
 //    public int getPaddingLeft() {
 //        return getWidth() / 2;

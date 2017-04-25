@@ -456,6 +456,15 @@ public class CrackingLayoutManager extends RecyclerView.LayoutManager implements
     }
 
 
+    @Override
+    public int getPaddingLeft() {
+        return getWidth() / 2 - 90 / 2;
+    }
+
+    @Override
+    public int getPaddingRight() {
+        return getWidth() / 2 - 90 / 2;
+    }
 
     /**
      * {@inheritDoc}
@@ -478,6 +487,8 @@ public class CrackingLayoutManager extends RecyclerView.LayoutManager implements
                 return;
             }
         }
+
+        System.out.println(mPendingScrollPosition+"==========================444");
         if (mPendingSavedState != null && mPendingSavedState.hasValidAnchor()) {
             mPendingScrollPosition = mPendingSavedState.mAnchorPosition;
         }
@@ -515,9 +526,9 @@ public class CrackingLayoutManager extends RecyclerView.LayoutManager implements
             extraForStart = extra;
             extraForEnd = 0;
         }
+
         extraForStart += mOrientationHelper.getStartAfterPadding() ;
         extraForEnd += mOrientationHelper.getEndPadding();
-        mPendingScrollPosition = 5;
         if (state.isPreLayout() && mPendingScrollPosition != NO_POSITION &&
                 mPendingScrollPositionOffset != INVALID_OFFSET) {
             // if the child is visible and we are going to move it around, we should layout
@@ -1453,6 +1464,7 @@ public class CrackingLayoutManager extends RecyclerView.LayoutManager implements
         measureChildWithMargins(view, 0, 0);
         result.mConsumed = mOrientationHelper.getDecoratedMeasurement(view);
         int left, top, right, bottom;
+        ;
         if (mOrientation == VERTICAL) {
             if (isLayoutRTL()) {
                 right = getWidth() - getPaddingRight();
@@ -1480,6 +1492,7 @@ public class CrackingLayoutManager extends RecyclerView.LayoutManager implements
                 right = layoutState.mOffset + result.mConsumed;
             }
         }
+
         // We calculate everything with View's bounding box (which includes decor and margins)
         // To calculate correct layout position, we subtract margins.
         layoutDecoratedWithMargins(view, left, top, right, bottom);

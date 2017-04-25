@@ -1,6 +1,7 @@
 package com.yang.linus.activity;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
@@ -24,12 +25,14 @@ public class RecyclerViewDomeActivity extends AppCompatActivity {
     private MyAdapter myAdapter;
     private LinearLayoutManager mManager;
     private CrackingMoveHelper mCrackingMoveHelper;
+    private int position = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view_dome);
         mRvView = (RecyclerView) findViewById(R.id.rv_view);
+
         myAdapter = new MyAdapter(this);
         mManager = new MyLayoutManager(this);
 //        mManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -37,6 +40,13 @@ public class RecyclerViewDomeActivity extends AppCompatActivity {
         mRvView.setLayoutManager(mManager);
         mCrackingMoveHelper = new CrackingMoveHelper();
         mCrackingMoveHelper.attachToRecyclerView(mRvView);
+        findViewById(R.id.bt_move).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCrackingMoveHelper.getLayoutManager().scrollToPosition(position++);
+                System.out.println(position+"======================");
+            }
+        });
     }
 
   class MyAdapter extends RecyclerView.Adapter {
@@ -74,7 +84,7 @@ public class RecyclerViewDomeActivity extends AppCompatActivity {
 
       @Override
       public int getItemCount() {
-          return 400;
+          return 30;
       }
 
       class MyHolder extends RecyclerView.ViewHolder {
