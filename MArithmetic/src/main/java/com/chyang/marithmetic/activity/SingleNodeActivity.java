@@ -22,13 +22,14 @@ public class SingleNodeActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_single_node);
         findViewById(R.id.bt_add).setOnClickListener(this);
         findViewById(R.id.bt_print).setOnClickListener(this);
+        single_node_init();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_add:
-                System.out.println(getString()+"============");
+                l_Insert(0, 3);
                 break;
             case R.id.bt_print:
                 break;
@@ -36,5 +37,9 @@ public class SingleNodeActivity extends AppCompatActivity implements View.OnClic
     }
 
     public native String getString();
+
+    public native void single_node_init();
+
+    public native void l_Insert(int i, int e);
 
 }
