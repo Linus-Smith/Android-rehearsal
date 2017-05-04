@@ -11,15 +11,10 @@ import java.util.Random;
 
 public class SingleNodeActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-
-    class NodeObj {
-        int num;
-        NodeObj next;
+    static {
+        System.loadLibrary("native-lib");
     }
 
-    private NodeObj  mNodeHead;
-    private NodeObj  mNodeEnd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,35 +28,13 @@ public class SingleNodeActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_add:
-                NodeObj obj = new NodeObj();
-                obj.num = new Random().nextInt();
-                addNode(obj);
+                System.out.println(getString()+"============");
                 break;
             case R.id.bt_print:
-                printNode();
                 break;
         }
     }
 
+    public native String getString();
 
-    public void addNode(NodeObj nodeObj) {
-        if(mNodeHead == null) {
-            mNodeHead = nodeObj;
-            mNodeEnd = mNodeHead;
-        } else {
-            mNodeEnd.next = nodeObj;
-            mNodeEnd = nodeObj;
-        }
-    }
-
-    public void printNode() {
-        NodeObj printNode;
-        if(mNodeHead != null) {
-            printNode = mNodeHead;
-           do{
-               System.out.println(printNode.num+"========");
-               printNode = printNode.next;
-           } while(printNode.next != null);
-        }
-    }
 }

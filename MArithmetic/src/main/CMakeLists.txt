@@ -9,16 +9,15 @@ cmake_minimum_required(VERSION 3.4.1)
 # You can define multiple libraries, and CMake builds it for you.
 # Gradle automatically packages shared libraries with your APK.
 
+set(NATIVE_DOME jni/native-lib.cpp jni/single_node/Single_node.cpp)
+
 add_library( # Sets the name of the library.
              native-lib
 
              # Sets the library as a shared library.
              SHARED
 
-             # Provides a relative path to your source file(s).
-             # Associated headers in the same location as their source
-             # file are automatically included.
-             jni/native-lib.cpp )
+             ${NATIVE_DOME})
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because system libraries are included in the search path by
