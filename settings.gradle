@@ -1,1 +1,1 @@
-include ':MGallery_Dome', ':MDevelopers',':MArithmetic'
+include ':MGallery_Dome', ':MDevelopers', ':MArithmetic', ':MFFmpeg'
