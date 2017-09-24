@@ -1,7 +1,6 @@
 #include <jni.h>
 #include <string>
 #include <android/log.h>
-#include <libswscale/swscale.h>
 extern "C" {
 #include "libavformat/avformat.h"
 }
