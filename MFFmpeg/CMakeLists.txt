@@ -9,9 +9,8 @@ include_directories(
 
 add_library(native-lib
             SHARED
-            src/main/jni/native-lib.cpp )
-
-message("路径  ${lib_src_DIR}")
+            src/main/jni/native-lib.cpp
+            src/main/jni/MediaPlayer.cpp  )
 
 add_library(avcodec-lib SHARED IMPORTED)
 set_target_properties(avcodec-lib PROPERTIES IMPORTED_LOCATION
